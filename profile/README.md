@@ -157,18 +157,140 @@ SOCIRIS integrates **four core components** to provide a comprehensive security 
 
 ---
 
+## 🏗️ System Architecture
+
+SOCIRIS follows a microservices architecture with multiple integrated components working together to provide comprehensive security solutions:
+
+```
+┌─────────────────────────────────────────────────────────────────────┐
+│                         SOCIRIS Platform                             │
+├─────────────────────────────────────────────────────────────────────┤
+│                                                                       │
+│  ┌──────────────┐      ┌──────────────┐      ┌──────────────┐      │
+│  │   Face-AI    │      │  Ensemble-AI │      │   SOC-AI     │      │
+│  │  Recognition │─────▶│  Threat Det. │─────▶│ Coordination │      │
+│  └──────────────┘      └──────────────┘      └──────────────┘      │
+│         │                      │                      │              │
+│         ▼                      ▼                      ▼              │
+│  ┌──────────────────────────────────────────────────────────┐      │
+│  │              Real-time Event Streaming (Kafka)           │      │
+│  └──────────────────────────────────────────────────────────┘      │
+│         │                      │                      │              │
+│         ▼                      ▼                      ▼              │
+│  ┌──────────────┐      ┌──────────────┐      ┌──────────────┐      │
+│  │  Logstash    │      │    Spark     │      │   Valkey     │      │
+│  │ Processing   │      │  Analytics   │      │   Cache      │      │
+│  └──────────────┘      └──────────────┘      └──────────────┘      │
+│         │                      │                      │              │
+│         ▼                      ▼                      ▼              │
+│  ┌──────────────────────────────────────────────────────────┐      │
+│  │            Data Storage (OpenSearch + MISP)              │      │
+│  └──────────────────────────────────────────────────────────┘      │
+│         │                                                             │
+│         ▼                                                             │
+│  ┌──────────────┐      ┌──────────────┐      ┌──────────────┐      │
+│  │   Kibana     │      │   Grafana    │      │  Dashboard   │      │
+│  │ Visualization│      │  Monitoring  │      │   (Web UI)   │      │
+│  └──────────────┘      └──────────────┘      └──────────────┘      │
+│                                                                       │
+│  ┌──────────────────────────────────────────────────────────┐      │
+│  │          Security Response Layer (SOAR + Shuffle)         │      │
+│  │  ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐     │      │
+│  │  │ Wazuh   │  │ Cortex  │  │TheHive  │  │DFIR-IRIS│     │      │
+│  │  │  IDS    │  │Analysis │  │Incident │  │Forensics│     │      │
+│  │  └─────────┘  └─────────┘  └─────────┘  └─────────┘     │      │
+│  └──────────────────────────────────────────────────────────┘      │
+│                                                                       │
+│  ┌──────────────────────────────────────────────────────────┐      │
+│  │        Deployment Layer (Docker + Kubernetes)             │      │
+│  └──────────────────────────────────────────────────────────┘      │
+│                                                                       │
+└─────────────────────────────────────────────────────────────────────┘
+         │                      │                      │
+         ▼                      ▼                      ▼
+┌──────────────┐      ┌──────────────┐      ┌──────────────┐
+│  IoT Devices │      │   Cameras    │      │  Traccar GPS │
+│   Sensors    │      │  CCTV/NVR    │      │   Tracking   │
+└──────────────┘      └──────────────┘      └──────────────┘
+```
+
+### Data Flow
+
+1. **Input Layer**: Cameras, IoT sensors, and GPS trackers feed data into the system
+2. **AI Processing**: Face-AI and Ensemble-AI analyze incoming data for threats
+3. **Event Streaming**: Kafka handles real-time event distribution
+4. **Data Processing**: Spark processes big data, Logstash transforms logs
+5. **Storage**: OpenSearch stores security events, MISP handles threat intelligence
+6. **Visualization**: Kibana and Grafana provide real-time dashboards
+7. **Response**: SOAR playbooks automatically respond to detected threats
+8. **Security Tools**: Wazuh, Cortex, TheHive coordinate incident response
+
+---
+
 ## 🏗️ Our Repositories
 
-| Repository | Description | Status |
-|------------|-------------|--------|
-| [**Launchpad**](https://github.com/SOCIRIS/Launchpad) | Official website and landing page | 🟢 Active |
-| **Core-Engine** | AI decision-making and threat detection engine | 🟡 In Development |
-| **Surveillance-Module** | Computer vision and facial recognition system | 🟡 In Development |
-| **Access-Control** | IoT-based ingress/egress management | 🟡 In Development |
-| **Asset-Tracker** | Real-time asset and personnel tracking | 🟡 In Development |
-| **Security-Auditor** | Automated vulnerability scanning tool | 🟡 In Development |
-| **Dashboard** | Centralized security operations center interface | 🟡 In Development |
-| **Documentation** | Technical documentation and guides | 🟡 In Development |
+### 🌐 Web & Documentation
+| Repository | Description | Tech | Status |
+|------------|-------------|------|--------|
+| [**Launchpad**](https://github.com/SOCIRIS/Launchpad) | Official website and landing page | HTML/CSS/JS | 🟢 Active |
+| [**Docs**](https://github.com/SOCIRIS/Docs) | Technical documentation and user guides | Markdown | 🟡 In Development |
+
+### 🤖 AI & Machine Learning
+| Repository | Description | Tech | Status |
+|------------|-------------|------|--------|
+| [**SOC-AI**](https://github.com/SOCIRIS/SOC-AI) | Core AI engine for security operations center | Python/AI | 🟡 In Development |
+| [**Ensemble-AI**](https://github.com/SOCIRIS/Ensemble-AI) | Multi-model threat detection (LSTM + One Class SVM + Isolation Forest + UEBA) | Python/ML | 🟡 In Development |
+| [**Face-AI**](https://github.com/SOCIRIS/Face-AI) | Facial recognition and identity verification system | Python/TensorFlow | 🟡 In Development |
+
+### 📊 Data Processing & Analytics
+| Repository | Description | Tech | Status |
+|------------|-------------|------|--------|
+| [**Spark**](https://github.com/SOCIRIS/Spark) | Big data processing with Apache Spark | Apache Spark | 🟡 In Development |
+| [**Kafka**](https://github.com/SOCIRIS/Kafka) | Real-time event streaming and message broker | Apache Kafka | 🟡 In Development |
+| [**Valkey**](https://github.com/SOCIRIS/Valkey) | High-performance caching and data storage | Redis/Valkey | 🟡 In Development |
+
+### 📈 Monitoring & Visualization
+| Repository | Description | Tech | Status |
+|------------|-------------|------|--------|
+| [**Grafana**](https://github.com/SOCIRIS/Grafana) | Real-time metrics visualization and dashboards | Grafana | 🟡 In Development |
+| [**Kibana**](https://github.com/SOCIRIS/Kibana) | Log analytics and visualization | Kibana | 🟡 In Development |
+| [**Opensearch**](https://github.com/SOCIRIS/Opensearch) | Search and analytics engine | OpenSearch | 🟡 In Development |
+| [**Logstash**](https://github.com/SOCIRIS/Logstash) | Log collection and processing pipeline | Logstash | 🟡 In Development |
+
+### 🔒 Security & Threat Intelligence
+| Repository | Description | Tech | Status |
+|------------|-------------|------|--------|
+| [**Wazuh**](https://github.com/SOCIRIS/Wazuh) | Host-based intrusion detection and security monitoring | Wazuh | 🟡 In Development |
+| [**Cortex**](https://github.com/SOCIRIS/Cortex) | Observable analysis and active response engine | Cortex | 🟡 In Development |
+| [**The-Hive**](https://github.com/SOCIRIS/The-Hive) | Security incident response platform | TheHive | 🟡 In Development |
+| [**DFIR-IRIS**](https://github.com/SOCIRIS/DFIR-IRIS) | Digital forensics and incident response platform | IRIS | 🟡 In Development |
+| [**MISSP**](https://github.com/SOCIRIS/MISSP) | Malware information sharing and threat intelligence | MISP | 🟡 In Development |
+| [**Defect-Dojo**](https://github.com/SOCIRIS/Defect-Dojo) | Vulnerability management and security testing | DefectDojo | 🟡 In Development |
+| [**Nmap**](https://github.com/SOCIRIS/Nmap) | Network scanning and vulnerability assessment scripts | Nmap | 🟡 In Development |
+
+### 🔄 Automation & Orchestration
+| Repository | Description | Tech | Status |
+|------------|-------------|------|--------|
+| [**Shuffle**](https://github.com/SOCIRIS/Shuffle) | Security orchestration, automation and response (SOAR) | Shuffle | 🟡 In Development |
+| [**SOAR-Playbooks**](https://github.com/SOCIRIS/SOAR-Playbooks) | Automated response playbooks for security incidents | YAML/Python | 🟡 In Development |
+| [**Ansible-Playbooks**](https://github.com/SOCIRIS/Ansible-Playbooks) | Infrastructure automation and configuration management | Ansible | 🟡 In Development |
+
+### 🐳 Infrastructure & Deployment
+| Repository | Description | Tech | Status |
+|------------|-------------|------|--------|
+| [**Docker**](https://github.com/SOCIRIS/Docker) | Container configurations and Docker compositions | Docker | 🟡 In Development |
+| [**K8s**](https://github.com/SOCIRIS/K8s) | Kubernetes manifests and cluster configurations | Kubernetes | 🟡 In Development |
+
+### 📍 IoT & Asset Tracking
+| Repository | Description | Tech | Status |
+|------------|-------------|------|--------|
+| [**Traccar**](https://github.com/SOCIRIS/Traccar) | Real-time GPS tracking and asset monitoring | Traccar | 🟡 In Development |
+
+### 🔧 Utilities & Tools
+| Repository | Description | Tech | Status |
+|------------|-------------|------|--------|
+| [**Utilities**](https://github.com/SOCIRIS/Utilities) | Common utilities, scripts, and helper tools | Python/Bash | 🟡 In Development |
+| [**Change-Detection**](https://github.com/SOCIRIS/Change-Detection) | Monitor and detect changes in surveillance feeds | Python/OpenCV | 🟡 In Development |
 
 ---
 
@@ -239,32 +361,43 @@ We welcome contributions from the community! SOCIRIS is being developed as an ac
 ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=flat&logo=pytorch&logoColor=white)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=flat&logo=scikit-learn&logoColor=white)
 
-### Computer Vision
+### Computer Vision & Facial Recognition
 ![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8?style=flat&logo=opencv&logoColor=white)
 ![YOLO](https://img.shields.io/badge/YOLO-00FFFF?style=flat&logo=yolo&logoColor=black)
+![FaceNet](https://img.shields.io/badge/FaceNet-4285F4?style=flat)
 
-### Data Processing
+### Data Processing & Streaming
 ![Apache Spark](https://img.shields.io/badge/Apache_Spark-E25A1C?style=flat&logo=apache-spark&logoColor=white)
 ![Apache Kafka](https://img.shields.io/badge/Apache_Kafka-231F20?style=flat&logo=apache-kafka&logoColor=white)
+![Valkey](https://img.shields.io/badge/Valkey-DC382D?style=flat&logo=redis&logoColor=white)
+![Logstash](https://img.shields.io/badge/Logstash-005571?style=flat&logo=logstash&logoColor=white)
 
 ### Monitoring & Analytics
 ![Grafana](https://img.shields.io/badge/Grafana-F46800?style=flat&logo=grafana&logoColor=white)
 ![Kibana](https://img.shields.io/badge/Kibana-005571?style=flat&logo=kibana&logoColor=white)
 ![OpenSearch](https://img.shields.io/badge/OpenSearch-005EB8?style=flat&logo=opensearch&logoColor=white)
 
-### Security Tools
+### Security & Threat Intelligence
 ![Wazuh](https://img.shields.io/badge/Wazuh-0078D4?style=flat&logo=security&logoColor=white)
 ![Nmap](https://img.shields.io/badge/Nmap-000000?style=flat&logo=nmap&logoColor=white)
-![SOAR](https://img.shields.io/badge/SOAR-Shuffle-6366f1?style=flat)
+![DefectDojo](https://img.shields.io/badge/DefectDojo-6C3483?style=flat)
+![Cortex](https://img.shields.io/badge/Cortex-FF6C37?style=flat)
+![TheHive](https://img.shields.io/badge/TheHive-F7B31C?style=flat)
+![MISP](https://img.shields.io/badge/MISP-1A5276?style=flat)
+![DFIR IRIS](https://img.shields.io/badge/DFIR_IRIS-2E86C1?style=flat)
+
+### Automation & Orchestration (SOAR)
+![Shuffle](https://img.shields.io/badge/Shuffle-6366f1?style=flat)
+![Ansible](https://img.shields.io/badge/Ansible-EE0000?style=flat&logo=ansible&logoColor=white)
 
 ### IoT & Tracking
 ![Traccar](https://img.shields.io/badge/Traccar-2C3E50?style=flat&logo=tracking&logoColor=white)
 ![MQTT](https://img.shields.io/badge/MQTT-660066?style=flat&logo=mqtt&logoColor=white)
 
-### Infrastructure
+### Infrastructure & DevOps
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white)
 ![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat&logo=kubernetes&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white)
+![Terraform](https://img.shields.io/badge/Terraform-7B42BC?style=flat&logo=terraform&logoColor=white)
 
 </div>
 
