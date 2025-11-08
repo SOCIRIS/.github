@@ -70,7 +70,7 @@ SOCIRIS integrates **four core components** to provide a comprehensive security 
 <table>
 <tr>
 <td align="center" width="25%">
-<img src="https://github.com/Monarch-MAT.png" width="100px;" alt="Muhammad Abdullah Tariq"/>
+<img src="https://github.com/matx104.png" width="100px;" alt="Muhammad Abdullah Tariq"/>
 <br />
 <sub><b>Muhammad Abdullah Tariq</b></sub>
 <br />
@@ -79,11 +79,11 @@ SOCIRIS integrates **four core components** to provide a comprehensive security 
 <sub>BB-6792</sub>
 <br />
 <br />
-<a href="https://github.com/Monarch-MAT" title="GitHub">
+<a href="https://github.com/matx104" title="GitHub">
 <img src="https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white" />
 </a>
 <br />
-<a href="https://linkedin.com/in/muhammad-abdullah-tariq" title="LinkedIn">
+<a href="https://linkedin.com/in/matx104" title="LinkedIn">
 <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" />
 </a>
 </td>
