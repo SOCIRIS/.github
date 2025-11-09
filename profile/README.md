@@ -98,11 +98,11 @@ SOCIRIS integrates **four core components** to provide a comprehensive security 
 <sub>BB-6864</sub>
 <br />
 <br />
-<a href="https://github.com/huzaifa-tariq" title="GitHub">
+<a href="https://github.com/huzaifatariq-sahibops" title="GitHub">
 <img src="https://img.shields.io/badge/GitHub-100000?style=flat&logo=github&logoColor=white" />
 </a>
 <br />
-<a href="https://linkedin.com/in/huzaifa-tariq" title="LinkedIn">
+<a href="https://linkedin.com/in/muhammad-huzaifa-tariq-5154a3290" title="LinkedIn">
 <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white" />
 </a>
 </td>
