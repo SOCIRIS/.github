@@ -210,7 +210,7 @@ Comprehensive dashboards provide real-time visibility into security posture, thr
 </td>
 
 <td align="center" width="25%">
-<img src="https://github.com/huzaifa-tariq.png" width="100px;" alt="Muhammad Huzaifa Tariq"/>
+<img src="https://github.com/huzaifatariq-sahibops.png" width="100px;" alt="Muhammad Huzaifa Tariq"/>
 <br />
 <sub><b>Muhammad Huzaifa Tariq</b></sub>
 <br />
