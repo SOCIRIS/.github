@@ -11,7 +11,7 @@
 
 *Pakistan's first fully autonomous AI-driven security platform combining real-time threat detection, automated incident response, and comprehensive monitoring across physical and cyber domains.*
 
-[🌐 Live Demo](https://ops.sociris.com) • [📧 Contact](mailto:info@sociris.com) • [🎓 About Us](#about-us)
+[🌐 Live Demo](https://sociris.com) • [📧 Contact](mailto:info@sociris.com) • [🎓 About Us](#about-us)
 
 ---
 
